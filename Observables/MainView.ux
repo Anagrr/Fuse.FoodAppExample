@@ -1,0 +1,27 @@
+<App Background="#fefefe">
+    <StatusBarBackground Background="#f53b50" Alignment="Top"/>
+    <JavaScript File="MainView.js"/>
+    
+
+    <Rectangle Layer="Background" ux:Name="bg" Alignment="Left" Width="33%" Color="MainColor">
+        <WhileTrue Value="{pageIndex} == 1">
+            <Change bg.Width="67%" Duration=".3" Easing="QuadraticInOut"/>
+        </WhileTrue>
+        <WhileTrue Value="{pageIndex} == 2">
+            <Change bg.Width="100%" Duration=".3" Easing="QuadraticInOut"/>
+        </WhileTrue>
+    </Rectangle>
+    
+    <ClientPanel>
+
+        <TopBar />
+
+        <PageControl ActiveIndex="{pageIndex}" Interaction="None" InactiveState="Collapsed" CachingMode="Never">
+            <Deferred>
+                <CategoriesView />
+                <CategoryDetailsView  />
+                <ShoppingCartView />
+            </Deferred>
+        </PageControl>
+    </ClientPanel>    
+</App>

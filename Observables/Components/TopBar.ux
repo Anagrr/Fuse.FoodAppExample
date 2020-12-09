@@ -1,0 +1,28 @@
+<DockPanel Layer="Overlay" ux:Class="TopBar" Alignment="TopCenter" Width="74%" Margin="0,20">
+    <WhileTrue Value="{pageIndex} != 1">
+        <fa.Menu Dock="Left" FontSize="22" Color="White" >
+            <TapZoneIncreaser Clicked="{goToStart}" />
+        </fa.Menu>                
+    </WhileTrue>
+    
+    <WhileTrue Value="{pageIndex} == 1">
+        <fa.ArrowLeft Dock="Left" Color="White">
+            <TapZoneIncreaser Clicked="{goBack}" />
+        </fa.ArrowLeft>
+    </WhileTrue>
+    
+    <fa.ShoppingBasket ux:Name="basket" Dock="Right" FontSize="22" Color="#dedede">
+        <WhileTrue Value="{cartItemsCount} > 0">
+            <Circle ux:Name="badgeBg" Size="20" Color="Red" Alignment="TopRight" Anchor="60%, 30%">
+                <Text ux:Name="badgeText" Font="CrimsonBold" Alignment="Center" FontSize="17" Value="{cartItemsCount}" Y="2" Color="White"/>
+            </Circle>
+        </WhileTrue>
+        
+        <WhileTrue Value="{pageIndex} == 2">
+            <Change badgeBg.Color="White"/>
+            <Change basket.Color="White"/>
+            <Change badgeText.Color="MainColor"/>
+        </WhileTrue>
+        <TapZoneIncreaser Clicked="{goToEnd}" />
+    </fa.ShoppingBasket>
+</DockPanel>

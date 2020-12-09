@@ -1,0 +1,75 @@
+<Page ux:Class="CategoryDetailsView">
+    <DockLayout/>
+
+    <PageHeader  ux:Name="header" TopText="{selectedCategory.name}" BottomText="menu"/>
+    
+    <ScrollView>
+        <ScrollingAnimation To="50">
+            <Change header.Opacity="0"/>
+        </ScrollingAnimation>
+
+        <StackPanel ItemSpacing="30" Padding="30, 200, 30, 40">
+            <Each Items="{selectedCategory.dishes}">
+                <DockPanel Width="100%" HitTestMode="LocalBoundsAndChildren">
+                    <Rectangle Layer="Background" Margin="30, 0" Color="White" CornerRadius="15">
+                        <DropShadow />
+                    
+                        <Rectangle ux:Name="addToCartButton" 
+                                    Size="35" 
+                                    Anchor="50%,50%" 
+                                    Alignment="BottomRight"
+                                    CornerRadius="65"
+                                    Color="White" 
+                                    Margin="0, 0, 0, 72"
+                                    HitTestMode="LocalBoundsAndChildren"
+                                    IsEnabled="{inCart} == false">
+                            <Clicked>
+                                <Scale Target="addToCartButton" Factor=".95" Duration=".1" />
+                                <Callback Handler="{addToCart}" />
+                            </Clicked>
+
+                            <Text ux:Name="cross" Value="+" Alignment="Center" FontSize="25" Color="MainColor"/>
+                            <DropShadow />
+                            <WhileDisabled>
+                                <Change addToCartButton.Color="MainColor" />
+                                <Change cross.Color="White" />
+                            </WhileDisabled>
+                        </Rectangle>
+                    </Rectangle>
+                    <Image File="{image}" Size="85" Layer="Overlay" Alignment="TopLeft" Margin="0, 25" CachingMode="Always">
+                        <Clicked>
+                            <Toggle Target="isDescriptionShown"/>
+                        </Clicked>
+                        <DropShadow />
+                    </Image>
+                    <StackPanel ItemSpacing="15" Dock="Fill" Alignment="Top" Margin="55,23,60,23" HitTestMode="LocalBoundsAndChildren">
+                        <Dish.HeaderText Value="{name}" Margin="45,0,0,0"/>
+                        
+                        <WhileTrue ux:Name="isDescriptionShown">
+                            <DockPanel>
+                                <DockPanel Dock="Left" Margin="0, 0, 26, 0">
+                                    <Panel Dock="Top" Size="0, 60"/>
+                                    <fa.Heart Dock="Top" Margin="0, 10" FontSize="20" Color="#ccc" />
+                                    <fa.Comment Dock="Top" Margin="0, 10" FontSize="20" Color="#ccc" />
+                                    <fa.Share Dock="Top"  Margin="0, 10" FontSize="20" Color="#ccc" />
+                                </DockPanel>
+                                <Dish.DescriptionText Value="{description}"/>
+                            </DockPanel>
+                        </WhileTrue>
+
+                        <RatingView Value="{rating}" Margin="45,0,0,0"/>
+                        <DockPanel Margin="45,0,0,0">
+                            <Text Dock="Left" Value="250 g" FontSize="14" Color="#aaa" Alignment="BottomLeft"/>
+                            <fa.EuroSign Dock="Right" FontSize="9" Color="MainColor"  Alignment="Top" />
+                            <Text Dock="Right" Value="{price}" Margin="5,0" FontSize="22" Font="CrimsonSemiBold" Color="MainColor" />
+                        </DockPanel>
+                        <Clicked>
+                            <Toggle Target="isDescriptionShown"/>
+                        </Clicked>
+                    </StackPanel>
+
+                </DockPanel>
+            </Each>
+        </StackPanel>
+    </ScrollView>
+</Page>
