@@ -1,0 +1,81 @@
+<Page ux:Class="ShoppingCartView">
+    <DockLayout/>
+
+    <PageHeader  ux:Name="header" TopText="Shopping" BottomText="cart" />
+
+    <ScrollView ux:Name="scroll">
+        <ScrollingAnimation To="60">
+            <Change header.Opacity="0"/>
+        </ScrollingAnimation>
+        
+        <StackPanel ItemSpacing="30" Padding="20, 200, 20, 100">
+            <Each Items="{cart.items}">
+                <CartListItem />
+            </Each>
+        </StackPanel>
+    </ScrollView>
+
+    <Rectangle ux:Name="summary" Layer="Overlay" Alignment="Bottom" Color="#fffffff6" Y="275" Height="350" CornerRadius="30,30,0,0" Padding="25">
+        <DockPanel>
+            <DockPanel Dock="Top" HitTestMode="LocalBoundsAndChildren">
+                <Dish.HeaderText Value="Shoping Cart Summary" Dock="Left" FontSize="20"/>
+                <fa.AngleRight ux:Name="chevron" Dock="Right" Color="MainColor" FontSize="22" Alignment="Bottom">
+                    <Rotation Degrees="90"/>
+                </fa.AngleRight>
+                <Clicked>
+                    <Toggle Target="isShown"/>
+                </Clicked>
+            </DockPanel>
+
+            <StackPanel ItemSpacing="15" Alignment="Center" Width="100%">
+                <DockPanel>
+                    <Text Dock="Left" Value="Number of items:" FontSize="16" Alignment="BottomLeft"/>
+                    <Text Dock="Right" Value="{cart.itemsCount}" FontSize="20" Font="CrimsonRegular"/>
+                </DockPanel>
+                <DockPanel>
+                    <Text Dock="Left" Value="Subtotal:" FontSize="16" Alignment="BottomLeft"/>
+                    <fa.EuroSign Dock="Right" FontSize="9" Alignment="Top" Y="3" />
+                    <Text Dock="Right" Value="{cart.subtotal}" Margin="5,0" FontSize="20" Font="CrimsonRegular"/>
+                </DockPanel>
+                <DockPanel>
+                    <Text Dock="Left" Value="Tax:" FontSize="16" Alignment="BottomLeft"/>
+                    <fa.EuroSign Dock="Right" FontSize="9" Alignment="Top" Y="3" />
+                    <Text Dock="Right" Value="{cart.taxPrice}" Margin="5,0" FontSize="20" Font="CrimsonRegular"/>
+                </DockPanel>
+                <DockPanel>
+                    <Text Dock="Left" Value="Total:" FontSize="16" Alignment="BottomLeft"/>
+                    <fa.EuroSign Dock="Right" FontSize="9" Color="MainColor"  Alignment="Top" />
+                    <Text Dock="Right" Value="{cart.total}" Margin="5,0" FontSize="20" Font="CrimsonBold" Color="MainColor" />
+                </DockPanel>
+            </StackPanel>
+            <DockPanel Dock="Bottom">
+                <StackPanel Dock="Left" Orientation="Horizontal" ItemSpacing="20">
+                    <Circle Size="38">
+                        <Stroke Width="2" Color="#ddd"/>
+                        <fa.Trash Alignment="Center" Color="#ddd" FontSize="13"/>
+                    </Circle>
+
+                    <Circle Size="38" >
+                        <Stroke Width="2" Color="#ddd"/>
+                        <fa.Bookmark Alignment="Center" FontSize="13" Color="#ddd"/>
+                    </Circle>
+                </StackPanel>
+                
+                <Rectangle Size="140, 45" Color="MainColor" CornerRadius="75" Dock="Right">
+                    <Text Value="Checkout" Color="White" Font="faRegular" Alignment="Center"/>
+                    <DropShadow Color="MainShadowColor" Distance="5" Size="10"/>
+                    <Clicked>
+                        <Scale Factor=".95" Duration=".1"/>
+                        <Toggle Target="isShown" Delay=".15"/>
+                        <Callback Handler="{checkOut}" Delay=".3"/>
+                    </Clicked>
+                </Rectangle>
+            </DockPanel>
+        </DockPanel>
+        <WhileTrue ux:Name="isShown">
+            <Rotate Target="chevron" Degrees="180" Duration=".3" Easing="QuadraticInOut"/>
+            <Change summary.Y="0" Duration=".3" Easing="QuadraticInOut"/>
+            <Change scroll.HitTestMode="None"/>
+        </WhileTrue>
+    </Rectangle>
+</Page>

@@ -1,0 +1,32 @@
+<ux:Resources>
+    <float4 ux:Global="MainColor" ux:Value="#f53b50"/>
+    <float4 ux:Global="MainShadowColor" ux:Value="#f53b5066"/>
+
+    <Font File="../Assets/Fonts/Bevan-Regular.ttf" ux:Global="BevanRegular"/>
+    <Font File="../Assets/Fonts/CrimsonText-SemiBold.ttf" ux:Global="CrimsonSemiBold"/>
+    <Font File="../Assets/Fonts/CrimsonText-Bold.ttf" ux:Global="CrimsonBold"/>
+    <Font File="../Assets/Fonts/CrimsonText-Regular.ttf" ux:Global="CrimsonRegular"/>
+    <Font File="../Assets/Fonts/fa-regular-400.ttf" ux:Global="faRegular"/>
+    <Font File="../Assets/Fonts/fa-solid-900.ttf" ux:Global="faSolid"/>
+
+    <Text ux:Class="fa.AngleRight" Value="&#xf105;" Font="faSolid"/>
+    <Text ux:Class="fa.ArrowLeft" Value="&#xf060;" Font="faSolid"/>
+    <Text ux:Class="fa.Menu" Value="&#xf0c9;" Font="faSolid"/>
+    <Text ux:Class="fa.ShoppingBasket" Value="&#xf291;" Font="faSolid"/>
+    <Text ux:Class="fa.Star" Value="&#xf005;" Font="faSolid" FontSize="12">
+        <DropShadow Distance="1" Angle="90" Size="1" Color="#ccc"/>
+    </Text>
+    <Text ux:Class="fa.EuroSign" Value="&#xf153;" Font="faSolid"/>
+    <Text ux:Class="fa.Share" Value="&#xf064;" Font="faSolid"/>
+
+    <Text ux:Class="fa.Bookmark" Value="&#xf02e;" Font="faRegular"/>
+    <Text ux:Class="fa.Trash" Value="&#xf2ed;" Font="faRegular"/>
+    <Text ux:Class="fa.Comment" Value="&#xf075;" Font="faRegular"/>
+    <Text ux:Class="fa.Heart" Value="&#xf004;" Font="faRegular"/>
+
+
+    <Text ux:Class="PageHeaderText" Font="BevanRegular" FontSize="34" Color="White" LoadAsync="true"/>
+    <Text ux:Class="CategoryListItemHeaderText" Font="BevanRegular" FontSize="22" Color="Black" LoadAsync="true"/>
+    <Text ux:Class="Dish.DescriptionText" LineSpacing="6" TextWrapping="Wrap" FontSize="14" LoadAsync="true"/>
+    <Text ux:Class="Dish.HeaderText" LineSpacing="-2" Font="CrimsonSemiBold" TextWrapping="Wrap" FontSize="18" Color="Black" LoadAsync="true"/>
+</ux:Resources>
