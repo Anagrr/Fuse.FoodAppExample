@@ -15,6 +15,9 @@ var subtotal = Observable(0);
 var total = Observable(0);
 var taxValue = 1;
 
+// listeners
+cartItems.onValueChanged(module, calculateSummury); // re-calculate summary after dish was added to cart
+
 // functions
 var goToDetails = function(args) {
     selectedCategory.value = args.data;
@@ -30,30 +33,28 @@ var goToStart = function() {
 };
 
 var goToEnd = function() {
-    if(cartItemsCount.value == 0) return;
     pageIndex.value = 2;  
 };
 
 var addToCart = function(args) {
     var dish = args.data;
 
-    cartItems.add({ dish, amount : Observable(1) });
+    var cartItem = { dish, amount : Observable(1) };
+    cartItem.amount.onValueChanged(module, calculateSummury); // re-calculate summary after amount of dishes was changed
+    cartItems.add(cartItem);
 
     var index = selectedCategory.value.dishes.indexOf(dish);
     selectedCategory.value.dishes[index].inCart.value = true;
-    calculateSummury();
 };
 
 function increaseAmount(args) {
     var index = cartItems.indexOf(args.data);
     cartItems.toArray()[index].amount.value++;
-    calculateSummury();
 }
 
 function decreaseAmount(args) {
     var index = cartItems.indexOf(args.data);
     cartItems.toArray()[index].amount.value--;
-    calculateSummury();
 }
 
 function calculateSummury() {
@@ -62,8 +63,8 @@ function calculateSummury() {
         sub += item.amount.value * item.dish.price;
     });
 
-    subtotal.value = accounting.formatMoney(sub, "", 2, ".", ",");
-    total.value = accounting.formatMoney(sub + taxValue, "", 2, ".", ",");
+    subtotal.value = getPrice(sub);
+    total.value = getPrice(sub + taxValue);
 }
 
 function checkOut() {
@@ -78,6 +79,10 @@ function checkOut() {
     goToStart();
 }
 
+function getPrice(value) {
+    return accounting.formatMoney(value, "", 2, " ", ".");
+}
+
 module.exports = {
     categories,
     pageIndex,
@@ -87,6 +92,7 @@ module.exports = {
     taxValue,
     subtotal,
     total,
+    taxPrice : getPrice(taxValue),
     goToDetails,
     goBack,
     goToStart,

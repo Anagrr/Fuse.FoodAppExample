@@ -40,7 +40,7 @@
                 <DockPanel>
                     <Text Dock="Left" Value="Tax:" FontSize="16" Alignment="BottomLeft"/>
                     <fa.EuroSign Dock="Right" FontSize="9" Alignment="Top" Y="3" />
-                    <Text Dock="Right" Value="{taxValue}.00" Margin="5,0" FontSize="20" Font="CrimsonRegular"/>
+                    <Text Dock="Right" Value="{taxPrice}" Margin="5,0" FontSize="20" Font="CrimsonRegular"/>
                 </DockPanel>
                 <DockPanel>
                     <Text Dock="Left" Value="Total:" FontSize="16" Alignment="BottomLeft"/>
