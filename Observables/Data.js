@@ -1,5 +1,5 @@
 var Observable = require('FuseJS/Observable');
-module.exports.categoriesList = [
+var categories = [
     {
         name: "Pizza",
         image: "Assets/Images/pizza.png",
@@ -20,8 +20,7 @@ module.exports.categoriesList = [
                 price: 9.99,
                 inCart: Observable(false),
             }
-        ],
-        dishesCount: 2
+        ]
     },
     {
         name: "Salads",
@@ -35,8 +34,7 @@ module.exports.categoriesList = [
                 price: 19.99,
                 inCart: Observable(false),
             }
-        ],
-        dishesCount: 1
+        ]
     },
     {
         name: "Desserts",
@@ -50,8 +48,7 @@ module.exports.categoriesList = [
                 price: 3.99,
                 inCart: Observable(false),
             }
-        ],
-        dishesCount: 1
+        ]
     },
     {
         name: "Pasta",
@@ -65,7 +62,9 @@ module.exports.categoriesList = [
                 price: 6.99,
                 inCart: Observable(false),
             }
-        ],
-        dishesCount: 1
+        ]
     }
 ];
+
+categories.forEach(c => c.dishesCount = c.dishes.length);
+module.exports.categoriesList = categories;
