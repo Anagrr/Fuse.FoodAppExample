@@ -8,6 +8,8 @@ Was made in two variants:
 
 All assets were taken for free from Internet and all rights belongs to its creators.
 
+For money value formatting was used free [Accounting.js](http://openexchangerates.github.io/accounting.js/) library.
+
 Original Gifs
 
 ![Original Gifs](https://cdn.dribbble.com/users/1148781/screenshots/4028104/attachments/922845/food_fin.gif)
