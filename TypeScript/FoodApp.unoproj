@@ -1,0 +1,29 @@
+{
+  "Packages": [
+    "Fuse",
+    "FuseJS"
+  ],
+  "Includes": [
+    "*",
+    "**.js:FuseJS",
+    "**.png:Bundle"
+  ],
+
+  "Title": "Food App",
+  "Version": "0.0.1",
+  "Mobile": {
+    "Orientations": "Portrait"
+  },
+  "Android": {
+    "ApplicationLabel": "Food App",
+    "Package": "com.anagr.FoodApp",
+    "Icons":{
+      "LDPI": "Assets/Images/icon.png",
+      "MDPI": "Assets/Images/icon.png",
+      "HDPI": "Assets/Images/icon.png",
+      "XHDPI": "Assets/Images/icon.png",
+      "XXHDPI": "Assets/Images/icon.png",
+      "XXXHDPI": "Assets/Images/icon.png"
+    }
+  }
+}

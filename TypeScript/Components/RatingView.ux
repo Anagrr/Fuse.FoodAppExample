@@ -1,0 +1,9 @@
+<StackPanel ux:Class="RatingView" Orientation="Horizontal" ItemSpacing="3">
+    <int ux:Property="Value" />
+    <Each Count="{ReadProperty Value}">
+        <fa.Star Color="#ffd30d"/>
+    </Each>
+    <Each Count="5 - {ReadProperty Value}">
+        <fa.Star Color="#ddd"/>
+    </Each>
+</StackPanel>
