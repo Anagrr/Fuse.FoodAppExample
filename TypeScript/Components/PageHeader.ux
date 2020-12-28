@@ -1,0 +1,7 @@
+<StackPanel ux:Class="PageHeader" Layer="Overlay" Margin="0,70" Dock="Top" Width="75%" ContentAlignment="Left" Alignment="TopCenter" ItemSpacing="-25" HitTestMode="None">
+    <string ux:Property="TopText"/>
+    <string ux:Property="BottomText"/>
+    
+    <PageHeaderText Value="{ReadProperty TopText}" TextAlignment="Left" />
+    <PageHeaderText Value="{ReadProperty BottomText}" TextAlignment="Left" />
+</StackPanel>

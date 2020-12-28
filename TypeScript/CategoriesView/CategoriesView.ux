@@ -1,0 +1,30 @@
+<Page ux:Class="CategoriesView">
+    <ScrollView>
+        <StackPanel ItemSpacing="30" Padding="30, 80, 30, 40">           
+            <Each Items="{categories}" Defer="Deferred">
+                <Deferred>
+                    <DockPanel Size="100%, 100" ux:Name="root">
+                        <Rectangle Layer="Background" Margin="30, 0" Color="White" CornerRadius="15">
+                            <DropShadow />
+                            <Rectangle ux:Name="RightButton" Size="35" Anchor="50%,50%" Alignment="Right" CornerRadius="65" Color="White">
+                                <DropShadow />
+                                <fa.AngleRight Alignment="Center" FontSize="20" Color="MainColor"/>
+                            </Rectangle>
+                        </Rectangle>
+                        <Image File="{image}" Size="65" Dock="Left" CachingMode="Always">
+                            <DropShadow />
+                        </Image>
+                        <StackPanel ItemSpacing="10" Dock="Fill" Alignment="VerticalCenter" Margin="20,0">
+                            <CategoryListItemHeaderText Value="{name}" />
+                            <Text Value="{dishesCount} items" FontSize="14" Color="#aaa"/>
+                        </StackPanel>
+                        <Clicked>
+                            <Scale Target="root" Factor=".95" Duration=".1" />
+                            <Callback Handler="{goToDetails}" Delay=".2"/>
+                        </Clicked>
+                    </DockPanel>
+                </Deferred>
+            </Each>
+        </StackPanel>
+    </ScrollView>
+</Page>

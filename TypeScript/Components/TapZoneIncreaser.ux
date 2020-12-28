@@ -1,0 +1,6 @@
+<Rectangle ux:Class="TapZoneIncreaser"
+            Color="#0000"
+            Size="40" 
+            Layer="Overlay" 
+            Alignment="Center" 
+            HitTestMode="LocalBoundsAndChildren"/>
